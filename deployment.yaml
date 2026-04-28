@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
       - name: solver
-        image: heat-solver:latest # This is the Docker image
+        image: thermakube-solver:v1 # This is the Docker image
+        imagePullPolicy: IfNotPresent # Tells K8s to use the local version if available
         resources:
           limits:
             cpu: "500m"
