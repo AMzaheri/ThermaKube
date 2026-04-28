@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: heat-solver-deployment
+spec:
+  replicas: 3 # Tells K8s to run 3 instances for redundancy
+  selector:
+    matchLabels:
+      app: heat-solver
+  template:
+    metadata:
+      labels:
+        app: heat-solver
+    spec:
+      containers:
+      - name: solver
+        image: heat-solver:latest # This is the Docker image
+        resources:
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+          requests:
+            cpu: "200m"
+            memory: "256Mi"
