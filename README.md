@@ -23,11 +23,13 @@ To run this project locally without cloud fees:
 
 1. **Clone the repo:**
 
-   ```bash
+And 
+```bash
    cd thermakube
 ```
 
 2. **Run the automated setup:**
+
 Ensure Docker is running, then execute:
 ```bash
   chmod +x reset_cluster.sh
@@ -41,8 +43,7 @@ Ensure Docker is running, then execute:
 ```
 
 ## DevOps Features
-. Self-Healing: If a solver pod fails, Kubernetes automatically restarts it to maintain the simulation state.
-. Resource Constraints: Pods are limited to 512MiB RAM to ensure cluster stability.
- 
-. Declarative Infrastructure: All configurations are managed via YAML manifests.
+- Self-Healing: If a solver pod fails, Kubernetes automatically restarts it to maintain the simulation stat.
+- Resource Constraints: Pods are limited to 512MiB RAM to ensure cluster stability.
+- Declarative Infrastructure: All configurations are managed via YAML manifests.
 
