@@ -15,7 +15,7 @@ def solve_heat_equation(size=50, iterations=100, alpha=0.01):
     Simulates 2D Heat Diffusion on a square grid.
     Equation: du/dt = alpha * (d2u/dx2 + d2u/dy2)
     """
-    # Initialse a cold plate (0 degrees) with a hot center (100 degrees)
+    # Initialise a cold plate (0 degrees) with a hot center (100 degrees)
     u = np.zeros((size, size))
     u[size//2, size//2] = 100.0
     
