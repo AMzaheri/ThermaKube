@@ -1,3 +1,5 @@
+![CI Status](https://github.com/AMzaheri/ThermaKube/actions/workflows/ci.yml/badge.svg)
+
 # ThermaKube
 
 ThermaKube is a cloud-native scientific orchestrator that simulates 2D Heat Diffusion across a distributed Kubernetes cluster. It demonstrates the transition from local scientific scripts to scalable, self-healing infrastructure.
