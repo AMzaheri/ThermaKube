@@ -49,3 +49,33 @@ Ensure Docker is running, then execute:
 - Resource Constraints: Pods are limited to 512MiB RAM to ensure cluster stability.
 - Declarative Infrastructure: All configurations are managed via YAML manifests.
 
+##  Scalability
+In a research environment, we might need to run hundreds of simultaneous simulations with different boundary conditions. Kubernetes makes this trivial to manage
+
+### 1. Scaling the Simulation
+To scale the number of active heat solvers from 3 to 10 instances, while the cluster is running run the following command:
+```bash
+  ./reset_cluster.sh
+```
+Once the pods are listed as Running under `kubectl get pods`, we can proceed with the experiments, run
+```bash
+  kubectl scale deployment heat-solver-deployment --replicas=10
+```
+Run `kubectl get pods`. We’ll see 10 pods working together. 
+
+When we're done, we'll bring it back to a manageable number:
+```bash
+  kubectl scale deployment heat-solver-deployment --replicas=3
+```
+### 2. Self-Healing Infrastructure
+If a pod crashes due to a memory limit or a node failure, the Kubernetes ReplicaSet will automatically detect the failure and spin up a new instance to maintain the desired state.
+
+Manually delete one of the running pods and watch how quickly the cluster heals itself:
+```bash
+  # Delete a specific pod
+  kubectl delete pod <pod-name>
+
+  # Immediately check the status to see a new pod being created
+  kubectl get pods
+```
+
