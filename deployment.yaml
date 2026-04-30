@@ -1,9 +1,10 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: heat-solver-deployment
 spec:
-  replicas: 3 # Tells K8s to run 3 instances for redundancy
+  replicas: 3
   selector:
     matchLabels:
       app: heat-solver
@@ -13,13 +14,13 @@ spec:
         app: heat-solver
     spec:
       containers:
-      - name: solver
-        image: thermakube-solver:v1 # This is the Docker image
-        imagePullPolicy: IfNotPresent # Tells K8s to use the local version if available
-        resources:
-          limits:
-            cpu: "500m"
-            memory: "512Mi"
-          requests:
-            cpu: "200m"
-            memory: "256Mi"
+        - name: solver
+          image: thermakube-solver:v1
+          imagePullPolicy: IfNotPresent
+          resources:
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+            requests:
+              cpu: "200m"
+              memory: "256Mi"
